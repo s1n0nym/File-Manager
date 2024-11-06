@@ -1,15 +1,23 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how GIGA IDE suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.io.*;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+public static void main(String[] args) {
+        FileManager fileManager = new FileManager();
+        String filePath = "example.txt";
+
+        try {
+            File file = fileManager.createOrOpenFile(filePath);
+            System.out.println("Файл " + file.getName() + " был создан или открыт.");
+
+            fileManager.writeToFile(filePath, "Hello, World!");
+            fileManager.writeToFile(filePath, "Это тестовое сообщение.");
+
+            String content = fileManager.readFromFile(filePath);
+            System.out.println("Содержимое файла:");
+            System.out.println(content);
+
+            fileManager.deleteFile(filePath);
+            System.out.println("Файл удален.");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    }
 }
