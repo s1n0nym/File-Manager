@@ -9,7 +9,7 @@ public static void main(String[] args) {
             System.out.println("Файл " + file.getName() + " был создан или открыт.");
 
             fileManager.writeToFile(filePath, "Hello, World!");
-            fileManager.writeToFile(filePath, "Это тестовое сообщение.");
+            fileManager.writeToFile(filePath, "Тестовое сообщение.");
 
             String content = fileManager.readFromFile(filePath);
             System.out.println("Содержимое файла:");
